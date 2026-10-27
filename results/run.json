@@ -1,0 +1,240 @@
+{
+  "config": {
+    "seed": 42,
+    "k": 10,
+    "primary_metric": "NDCG@10",
+    "rating_threshold": 4,
+    "split_quantiles": [
+      0.8,
+      0.9
+    ],
+    "threads": 2,
+    "bootstrap_samples": 2000,
+    "search": {
+      "ItemKNN": [
+        {
+          "n_neighbors": 50,
+          "shrink": 10
+        },
+        {
+          "n_neighbors": 150,
+          "shrink": 30
+        }
+      ],
+      "IALS": [
+        {
+          "n_factors": 32,
+          "reg": 1.0,
+          "alpha": 20.0,
+          "n_iters": 10
+        },
+        {
+          "n_factors": 32,
+          "reg": 10.0,
+          "alpha": 20.0,
+          "n_iters": 10
+        }
+      ],
+      "EASE": [
+        {
+          "reg": 100.0
+        },
+        {
+          "reg": 500.0
+        }
+      ],
+      "FM": [
+        {
+          "n_factors": 32,
+          "lr": 0.01,
+          "reg": 1e-05,
+          "epochs": 10
+        },
+        {
+          "n_factors": 32,
+          "lr": 0.005,
+          "reg": 0.0001,
+          "epochs": 15
+        }
+      ],
+      "CustomALS": [
+        {
+          "n_factors": 32,
+          "reg": 1.0,
+          "alpha": 20.0,
+          "n_iters": 10
+        },
+        {
+          "n_factors": 32,
+          "reg": 10.0,
+          "alpha": 20.0,
+          "n_iters": 10
+        }
+      ]
+    }
+  },
+  "selected": {
+    "ItemKNN": {
+      "n_neighbors": 150,
+      "shrink": 30
+    },
+    "IALS": {
+      "n_factors": 32,
+      "reg": 10.0,
+      "alpha": 20.0,
+      "n_iters": 10
+    },
+    "EASE": {
+      "reg": 500.0
+    },
+    "FM": {
+      "n_factors": 32,
+      "lr": 0.01,
+      "reg": 1e-05,
+      "epochs": 10
+    },
+    "CustomALS": {
+      "n_factors": 32,
+      "reg": 10.0,
+      "alpha": 20.0,
+      "n_iters": 10
+    }
+  },
+  "dataset": {
+    "dataset": "Amazon Reviews 2018 — Musical Instruments (5-core)",
+    "source": "https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/index.html",
+    "files": {
+      "Musical_Instruments_5.json.gz": {
+        "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_v2/categoryFilesSmall/Musical_Instruments_5.json.gz",
+        "sha256": "e3ae8a3f0d70bf63242a49539a8847d30216a3aa2938c049c7f43d0473fef1bc",
+        "bytes": 39353085
+      },
+      "meta_Musical_Instruments.json.gz": {
+        "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_v2/metaFiles2/meta_Musical_Instruments.json.gz",
+        "sha256": "8e3f0dbe4c6c1aa5b32d350aa26072232beb6160ff3c5dadb44bca2c473a8b41",
+        "bytes": 173201671
+      }
+    },
+    "raw_rows": 231392,
+    "malformed_rows": 0,
+    "missing_fields": {
+      "user_id": 0,
+      "item_id": 0,
+      "rating": 0,
+      "timestamp": 0
+    },
+    "invalid_rows": 0,
+    "duplicate_user_item_rows": 12236,
+    "clean_rows": 219156,
+    "n_users": 27530,
+    "n_items": 10620,
+    "timestamp_min": 1067299200,
+    "timestamp_max": 1538092800,
+    "metadata_source_rows": 120310,
+    "malformed_metadata_rows": 0,
+    "metadata_matched_items": 10611,
+    "metadata_missing_items": 9,
+    "missing_title_items": 0,
+    "missing_category_items": 281,
+    "missing_brand_items": 86
+  },
+  "protocol": {
+    "validation_cutoff_timestamp": 1488153600,
+    "test_cutoff_timestamp": 1506816000,
+    "train_fraction_requested": 0.8,
+    "validation_fraction_requested": 0.09999999999999998,
+    "catalog_max_items": null,
+    "n_train_users": 25427,
+    "n_train_items": 10521,
+    "train_rows_before_catalog_filter": 175204,
+    "train_rows_removed_by_catalog_filter": 0,
+    "retained_rows_all_splits": 204334,
+    "splits": {
+      "train": {
+        "raw_rows": 175204,
+        "retained_rows": 175204,
+        "dropped_cold_user_rows": 0,
+        "dropped_cold_item_rows": 0,
+        "dropped_any_cold_rows": 0,
+        "cold_users": 0,
+        "cold_items": 0,
+        "raw_positive_rows": 152224,
+        "retained_positive_rows": 152224,
+        "positive_retention": 1.0
+      },
+      "validation": {
+        "raw_rows": 21993,
+        "retained_rows": 15358,
+        "dropped_cold_user_rows": 6448,
+        "dropped_cold_item_rows": 232,
+        "dropped_any_cold_rows": 6635,
+        "cold_users": 1263,
+        "cold_items": 78,
+        "raw_positive_rows": 19104,
+        "retained_positive_rows": 13224,
+        "positive_retention": 0.6922110552763819,
+        "evaluation_users": 5653,
+        "users_with_no_eligible_positive": 584,
+        "eligible_positive_rows": 13224
+      },
+      "test": {
+        "raw_rows": 21959,
+        "retained_rows": 13772,
+        "dropped_cold_user_rows": 7833,
+        "dropped_cold_item_rows": 517,
+        "dropped_any_cold_rows": 8187,
+        "cold_users": 1460,
+        "cold_items": 99,
+        "raw_positive_rows": 18715,
+        "retained_positive_rows": 11570,
+        "positive_retention": 0.6182206786000535,
+        "evaluation_users": 5102,
+        "users_with_no_eligible_positive": 618,
+        "eligible_positive_rows": 11570
+      }
+    },
+    "train_sparsity": 0.9993450745404971,
+    "train_positive_sparsity": 0.9994309754734632,
+    "candidate_policy": "all items observed in train; exclude every previously rated item",
+    "relevance": "held-out rating >= 4; candidate must belong to fixed train catalog"
+  },
+  "learning_curves": {
+    "FM": [
+      0.48023352686507254,
+      0.38157358195379254,
+      0.3327106630111604,
+      0.2983779830634839,
+      0.27239838830910895,
+      0.2518181640179797,
+      0.23776722207609963,
+      0.22734839680992505,
+      0.22006209097965837,
+      0.21136282278262383
+    ],
+    "FM IDs only": [
+      0.6222721209269441,
+      0.4862227444779936,
+      0.4154862418369458,
+      0.3783851987598747,
+      0.35305318457119633,
+      0.3359137230786138,
+      0.324781191940724,
+      0.3172354801561966,
+      0.31170089569741305,
+      0.30658254740109186
+    ]
+  },
+  "environment": {
+    "python": "3.13.2",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "pandas": "2.2.3",
+      "torch": "2.14.1",
+      "nbformat": "5.11.1",
+      "nbclient": "0.11.0",
+      "threadpoolctl": "3.6.0"
+    }
+  }
+}

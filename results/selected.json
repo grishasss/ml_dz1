@@ -1,0 +1,27 @@
+{
+  "ItemKNN": {
+    "n_neighbors": 150,
+    "shrink": 30
+  },
+  "IALS": {
+    "n_factors": 32,
+    "reg": 10.0,
+    "alpha": 20.0,
+    "n_iters": 10
+  },
+  "EASE": {
+    "reg": 500.0
+  },
+  "FM": {
+    "n_factors": 32,
+    "lr": 0.01,
+    "reg": 1e-05,
+    "epochs": 10
+  },
+  "CustomALS": {
+    "n_factors": 32,
+    "reg": 10.0,
+    "alpha": 20.0,
+    "n_iters": 10
+  }
+}

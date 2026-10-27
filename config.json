@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "k": 10,
+  "primary_metric": "NDCG@10",
+  "rating_threshold": 4,
+  "split_quantiles": [0.8, 0.9],
+  "threads": 2,
+  "bootstrap_samples": 2000,
+  "search": {
+    "ItemKNN": [{"n_neighbors": 50, "shrink": 10}, {"n_neighbors": 150, "shrink": 30}],
+    "IALS": [{"n_factors": 32, "reg": 1.0, "alpha": 20.0, "n_iters": 10}, {"n_factors": 32, "reg": 10.0, "alpha": 20.0, "n_iters": 10}],
+    "EASE": [{"reg": 100.0}, {"reg": 500.0}],
+    "FM": [{"n_factors": 32, "lr": 0.01, "reg": 0.00001, "epochs": 10}, {"n_factors": 32, "lr": 0.005, "reg": 0.0001, "epochs": 15}],
+    "CustomALS": [{"n_factors": 32, "reg": 1.0, "alpha": 20.0, "n_iters": 10}, {"n_factors": 32, "reg": 10.0, "alpha": 20.0, "n_iters": 10}]
+  }
+}
